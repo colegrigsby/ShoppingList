@@ -1,0 +1,10 @@
+Login authentification
+redirect to home page unless logged in
+only show login when needs to be logged in
+time login????
+attempts?
+error messages + validation
+create account
+session service - singleton object
+auth service/factory?
+error page

@@ -1,0 +1,1 @@
+var app = angular.module("listApp", ['ui.bootstrap', 'ui.router']);
