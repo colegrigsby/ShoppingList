@@ -1,7 +1,22 @@
 <div class="text-center">
-    <h2>Welcome to the shopping list application!</h2>
+
+    <!--TODO ONLY SHOW IF NOT LOGGED IN, otherwise button to list? -->
+
+    <div ng-show="!loggedIn()">
+        <h2>Welcome</h2>
+        <a ui-sref=".login" class="btn btn-primary">Login</a>
+        <a ui-sref=".register" class="btn btn-danger">Register</a>
+
+    </div>
+    <div ng-show="loggedIn()">
+        <shopping-list></shopping-list>
+    <br>
+        <a ui-sref=".logout" class="btn btn-primary">Logout</a>
+    </div>
 
 
-    <p>Login here </p>
+
+
+    <div ui-view></div>
 
 </div>

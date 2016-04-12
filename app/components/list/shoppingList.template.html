@@ -1,0 +1,30 @@
+<!--<uib-accordion-group heading="{{list.title}}" is-open="open">-->
+<div class="col-md-6 col-md-offset-3">
+
+    <div>
+        <div class="text-center">
+            <button ng-show="showSort" ng-click="swapSort()">{{sorting}}</button>
+        </div>
+        <br>
+        <p></p>
+        <ul class="list-group" style="list-style-type : none;">
+            <li class="list-group-item animate-repeat"
+                ng-repeat="item in list.items track by $index">{{$index
+                +
+                1}}. {{item.item}} {{item.quantity}}
+                <button class="pull-right" ng-click="remove(item)">Remove</button>
+                <button class="pull-left" ng-click="markComplete(item)">Mark Complete</button>
+
+            </li>
+            <li class="list-group-item animate-repeat" ng-if="list.items.length == 0">
+                <strong>Empty List</strong>
+            </li>
+        </ul>
+        <div class="text-center">
+
+            <input type="text" ng-model="model.newItem">
+            <input type="number" ng-model="model.quantity">
+            <button ng-click="add()">Add</button>
+        </div>
+    </div>
+</div>
