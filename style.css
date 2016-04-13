@@ -1,0 +1,60 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* change well to make them line up in columns and add a faint drop shadow */
+
+.well {
+    margin: 20px;
+    padding: 10px;
+    /*width: 100%;*/
+    border: 2px solid #e0e0e0;
+    float: left;
+    box-shadow: 10px 10px 5px #888888;
+
+}
+
+/* add a new entry that changes the drop shadow to make the well look like it is rising up when the mouse hovers over it */
+
+.popup {
+    left: 50px;
+    top: 50px;
+    position: absolute;
+    background-color: #7BCC70;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.popup.ng-hide-add, .popup.ng-hide-remove{
+    transition: all linear 0.5s;
+}
+
+.popup.ng-hide {
+    opacity:0;
+}
+
+.animate-repeat {
+
+}
+
+/*create keyframe for animation??*/
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    transition:all linear 0.2s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}
