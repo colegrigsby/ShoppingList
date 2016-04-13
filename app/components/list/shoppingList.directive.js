@@ -1,7 +1,7 @@
 app.directive('shoppingList', function (listService, $log) {
     return {
         scope: {
-            
+            list: "="
         },
         link: function(scope, elem, attr){
 
@@ -10,16 +10,15 @@ app.directive('shoppingList', function (listService, $log) {
             scope.showSort = attr.showSort !== undefined;
             scope.showRemove = attr.showRemove !== undefined;
             scope.model = {newItem: "", quantity: 1};
-            scope.list = listService.getCurrentList();
-
+            //scope.list = listService.getCurrentList();
 
 
             scope.add = function(){
-                if (!scope.list){
+                /*if (!scope.list){
                     scope.list = listService.getCurrentList();
 
-                }
-                $log.log(scope);
+                }*/
+                //$log.log(scope.list);
                 listService.addItem(scope.list.userId, scope.model.newItem, scope.model.quantity);
                 scope.model.newItem = "";
                 scope.model.quantity = 1;
@@ -29,13 +28,14 @@ app.directive('shoppingList', function (listService, $log) {
 
             scope.remove = function(item) {
                 listService.removeItem(scope.list.userId, item);
-                $log.log("removed?");
+                //$log.log("removed?");
                 scope.list = listService.getCurrentList();
 
             }
 
-            scope.markComplete = function(item) {
-                //edit the item 
+            scope.toggleComplete = function(item) {
+                listService.toggleComplete(scope.list.userId, item);
+                
             }
 
             scope.swapSort = function() {

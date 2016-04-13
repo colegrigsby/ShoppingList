@@ -17,10 +17,9 @@ html {
 /* add a new entry that changes the drop shadow to make the well look like it is rising up when the mouse hovers over it */
 
 .popup {
-    left: 50px;
-    top: 50px;
+    left: 70px;
+    top: 70px;
     position: absolute;
-    background-color: #7BCC70;
     border-radius: 25px;
     padding: 20px;
     box-shadow: 10px 10px 5px #888888;
@@ -33,7 +32,11 @@ html {
 .popup.ng-hide {
     opacity:0;
 }
-
+.logoff {
+    width: 230px;
+    height: 250px;
+    margin-right: 20px;
+}
 .animate-repeat {
 
 }
