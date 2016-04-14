@@ -22,12 +22,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'loginController'
 
         })
-        .state('home.logout', {
+        /*.state('home.logout', {
             url: '/logout',
             templateUrl: 'app/components/login/logout.partial.html',
             controller: 'loginController'
 
-        })
+        })*/
 
 
     

@@ -1,9 +1,7 @@
 app.controller("loginController", function($scope, $log, userService, $location, $timeout, $rootScope){
     
     $scope.model = {username: "", password: ""};
-    $scope.logoffMsg = "Are you sure you want to log off?"
 
-    $scope.ask = true;
 
     $scope.login = function() {
         //$log.log($scope.model.username, $scope.model.password);
@@ -24,17 +22,9 @@ app.controller("loginController", function($scope, $log, userService, $location,
         }
     }
 
-    $scope.logout = function() {
-        userService.clearCurrentUser();
 
-
-        $location.path('/');
-
-    }
-
-    $scope.home = function(){
-        $location.path('/');
-    }
+    
     
     
 });
+

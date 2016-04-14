@@ -1,11 +1,11 @@
-<div class="pull-right logoff">
+<div class="modal-header">
 
 
-    <h1>{{logoffMsg}}</h1>
-    <div ng-show="ask" class="">
-        <a ng-click="logout()" class="btn btn-primary">Yes</a>
-        <a ng-click="home()" class="btn btn-warning">No</a>
-    </div>
-
-
+    <h1 class="modal-title">Are you sure you want to logoff?</h1>
 </div>
+<div class="modal-footer">
+    <a ng-click="logout()" class="btn btn-primary">Yes</a>
+    <a ng-click="home()" class="btn btn-warning">No</a>
+</div>
+
+

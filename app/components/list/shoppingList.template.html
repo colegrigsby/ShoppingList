@@ -1,52 +1,55 @@
 <!--<uib-accordion-group heading="{{list.title}}" is-open="open">-->
-<div class="col-md-6 col-md-offset-3">
+<div class="">
+    <div class="col-md-6 col-md-offset-3">
 
-    <div>
-        <div class="text-center">
-            <button ng-show="showSort" ng-click="swapSort()">{{sorting}}</button>
-        </div>
-        <br>
-        <p></p>
-        <ul class="list-group" style="list-style-type : none;">
-            <li class="list-group-item animate-repeat">
-                <h3>Shopping List</h3>
-            </li>
-            <li class="list-group-item animate-repeat" ng-if="list.items.length > 0">
-                <h5>Item - Quantity</h5>
-            </li>
-            <li class="list-group-item animate-repeat"
-                ng-repeat="item in list.items | orderBy :['completed', 'item'] track by $index"
-                ng-style="item.completed && {'text-decoration': 'line-through'}"
-                style="min-height: 50px">
-                <strong>{{$index + 1}}.</strong> {{item.item}} - {{item.quantity}}
-                <button class="pull-right btn btn-warning btn-sm" ng-click="remove(item)">Remove</button>
-                <button class="pull-left btn btn-success btn-sm" ng-click="toggleComplete(item)">Mark {{item.completed ?
-                    "incomplete" : "complete"}}
-                </button>
+        <div>
+<div class="">
+            <ul class="list-group " style="list-style-type : none;">
+                <li class="list-group-item animate-repeat">
+                    <h3>Shopping List</h3>
+                </li>
+                <li class="add list-group-item">
+                    <h4>Add New Item</h4>
+                    <row>
+                        <div class="col-md-2"></div>
 
-            </li>
-            <li class="list-group-item animate-repeat" ng-if="list.items.length == 0">
-                <strong>Empty List</strong>
-            </li>
-        </ul>
-        <div class="text-center">
-            <h4>Add New Item</h4>
-            <row>
-                <div class="col-md-2"></div>
+                        <div class="col-md-3">
 
-                <div class="col-md-3">
+                            <label>Item</label> <input type="text" ng-model="model.newItem" class="form-control">
+                        </div>
+                        <div class="col-xs-2">
+                            <label>Quantity</label> <input type="number" ng-model="model.quantity" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <br>
+                            <button ng-click="add()" class="btn btn-info"
+                                    ng-disabled="model.newItem == '' || model.quantity < 1">Add
+                            </button>
+                        </div>
+                    </row>
+                </li>
+                <li class="list-group-item animate-repeat" ng-if="list.items.length > 0">
+                    <h5>Item - Quantity</h5>
+                </li>
+                <div  class="list-wrapper">
+                <li class="list-group-item animate-repeat text-center"
+                    ng-repeat="item in list.items | orderBy :['completed', 'item'] track by $index"
+                    ng-style="item.completed && {'text-decoration': 'line-through'}"
+                    style="min-height: 50px">
+                    <strong>{{$index + 1}}.</strong> {{item.item}} - {{item.quantity}}
+                    <button class="pull-right btn btn-warning btn-sm" ng-click="remove(item)">Remove</button>
+                    <button class="pull-left btn btn-success btn-sm" ng-click="toggleComplete(item)">Mark
+                        {{item.completed ?
+                        "incomplete" : "complete"}}
+                    </button>
 
-                    <label>Item</label> <input type="text" ng-model="model.newItem" class="form-control">
-                </div>
-                <div class="col-xs-2">
-                    <label>Quantity</label> <input type="number" ng-model="model.quantity" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <br>
-                    <button ng-click="add()" class="btn btn-info"
-                            ng-disabled="model.newItem == ''">Add</button>
-                </div>
-            </row>
+                </li>
+                    </div>
+                <li class="list-group-item animate-repeat" ng-if="list.items.length == 0">
+                    <strong>Empty List</strong>
+                </li>
+            </ul>
+</div>
         </div>
     </div>
 </div>

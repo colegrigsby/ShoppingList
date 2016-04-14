@@ -23,11 +23,11 @@ app.factory('listService', function ($rootScope, userService, $log) {
     service.addItem = function (userId, newItem, quantity) {
         var list;
         if ((list = this.getList(userId))) {
-            $log.log(list);
+            //$log.log(list);
             var idx = listIndex(list);
 
             list.items.push({item: newItem, quantity: quantity, completed: false});
-            $log.log(idx)
+            //$log.log(idx)
 
             updateList(idx, list);
             $rootScope.$broadcast("add", newItem, quantity);
@@ -45,7 +45,7 @@ app.factory('listService', function ($rootScope, userService, $log) {
         var rval;
         var list = this.getList(userId);
         var listsIdx = listIndex(list);
-        $log.log(listsIdx);
+        //$log.log(listsIdx);
         list.items = list.items.filter(function (itm) {
 
             return itm.item != itemToRemove.item || itm.quantity != itemToRemove.quantity;

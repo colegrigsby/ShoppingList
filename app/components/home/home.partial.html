@@ -1,7 +1,5 @@
 <div class="text-center">
 
-    <!--TODO ONLY SHOW IF NOT LOGGED IN, otherwise button to list? -->
-
     <div ng-show="!loggedIn()">
         <h2>Welcome to your shopping list!</h2>
         <p>Please login or register</p>
@@ -12,7 +10,7 @@
     <div ng-show="loggedIn()">
         <shopping-list list="list"></shopping-list>
         <br>
-        <a ui-sref=".logout" class="btn btn-primary">Logout</a>
+        <a ng-click="open()" class="btn btn-primary">Logout</a>
         <p class="text-center">You are logged in as {{username}}</p>
 
     </div>
