@@ -23,11 +23,11 @@ app.factory('listService', function ($rootScope, userService, $log) {
     service.addItem = function (userId, newItem, quantity) {
         var list;
         if ((list = this.getList(userId))) {
-            $log.log(list);
+            //$log.log(list);
             var idx = listIndex(list);
 
             list.items.push({item: newItem, quantity: quantity, completed: false});
-            $log.log(idx)
+            //$log.log(idx)
 
             updateList(idx, list);
             $rootScope.$broadcast("add", newItem, quantity);

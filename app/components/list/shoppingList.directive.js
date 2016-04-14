@@ -14,11 +14,7 @@ app.directive('shoppingList', function (listService, $log) {
 
 
             scope.add = function(){
-                /*if (!scope.list){
-                    scope.list = listService.getCurrentList();
 
-                }*/
-                //$log.log(scope.list);
                 listService.addItem(scope.list.userId, scope.model.newItem, scope.model.quantity);
                 scope.model.newItem = "";
                 scope.model.quantity = 1;
@@ -27,8 +23,8 @@ app.directive('shoppingList', function (listService, $log) {
             }
 
             scope.remove = function(item) {
+                $log.log(item.item);
                 listService.removeItem(scope.list.userId, item);
-                //$log.log("removed?");
                 scope.list = listService.getCurrentList();
 
             }
@@ -38,6 +34,8 @@ app.directive('shoppingList', function (listService, $log) {
                 
             }
 
+
+            //not implemented in this project
             scope.swapSort = function() {
                 if (scope.alpha) {
                     scope.sorting = "Sort A to Z";

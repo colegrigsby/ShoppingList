@@ -22,9 +22,27 @@ html {
     position: absolute;
     border-radius: 25px;
     padding: 20px;
-    box-shadow: 10px 10px 5px #888888;
+    color: white;
+    /*box-shadow: 10px 10px 5px #888888;*/
 }
 
+.list-wrapper {
+    overflow-y: scroll;
+    max-height: 400px;
+}
+.add {
+    height: 150px;
+}
+
+.rounded {
+    border-radius: 25px;
+
+}
+
+.app {
+    background-color: #28a4c9;
+    border-radius: 25px;
+}
 .popup.ng-hide-add, .popup.ng-hide-remove{
     transition: all linear 0.5s;
 }
