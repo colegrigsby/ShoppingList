@@ -23,6 +23,7 @@ app.directive('shoppingList', function (listService, $log) {
             }
 
             scope.remove = function(item) {
+                $log.log(item.item);
                 listService.removeItem(scope.list.userId, item);
                 scope.list = listService.getCurrentList();
 

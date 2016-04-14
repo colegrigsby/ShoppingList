@@ -45,7 +45,7 @@ app.factory('listService', function ($rootScope, userService, $log) {
         var rval;
         var list = this.getList(userId);
         var listsIdx = listIndex(list);
-        //$log.log(listsIdx);
+        $log.log(listsIdx);
         list.items = list.items.filter(function (itm) {
 
             return itm.item != itemToRemove.item || itm.quantity != itemToRemove.quantity;
