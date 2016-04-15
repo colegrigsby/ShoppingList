@@ -23,10 +23,15 @@ app.directive('shoppingList', function (listService, $log) {
             }
 
             scope.remove = function(item) {
-                $log.log(item.item);
+                //$log.log(item.item);
                 listService.removeItem(scope.list.userId, item);
                 scope.list = listService.getCurrentList();
 
+            }
+
+            scope.removeAll = function() {
+                listService.removeAllFromList(scope.list.userId);
+                scope.list = listService.getCurrentList();
             }
 
             scope.toggleComplete = function(item) {

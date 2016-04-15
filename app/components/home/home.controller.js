@@ -3,7 +3,7 @@ app.controller("homeController", function($scope, $rootScope, $log, listService,
     $scope.list = listService.getCurrentList();
     $scope.username = userService.getCurrentUser().username;
 
-    $rootScope.$on("loggedIn", function(data){
+    $rootScope.$on("user:loggedIn", function(data){
         $scope.list = listService.getCurrentList();
         $scope.username = userService.getCurrentUser().username;
     });

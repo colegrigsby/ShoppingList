@@ -17,7 +17,7 @@ app.controller("loginController", function($scope, $log, userService, $location,
             //invalid login
             //$log.log("failure ;(", user );
             $scope.model.password = "";
-            $rootScope.$broadcast("loginError");
+            $rootScope.$broadcast("login:error");
 
         }
     }

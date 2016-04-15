@@ -30,7 +30,7 @@ app.factory('listService', function ($rootScope, userService, $log) {
             //$log.log(idx)
 
             updateList(idx, list);
-            $rootScope.$broadcast("add", newItem, quantity);
+            $rootScope.$broadcast("list:add", newItem, quantity);
 
         }
         else {
@@ -41,11 +41,9 @@ app.factory('listService', function ($rootScope, userService, $log) {
 
     //removes all instances of the item where it's quantity is the same 
     service.removeItem = function (userId, itemToRemove) {
-
         var rval;
         var list = this.getList(userId);
         var listsIdx = listIndex(list);
-        $log.log(listsIdx);
         list.items = list.items.filter(function (itm) {
 
             return itm.item != itemToRemove.item || itm.quantity != itemToRemove.quantity;
@@ -55,7 +53,7 @@ app.factory('listService', function ($rootScope, userService, $log) {
         //$log.log(list)
         rval = updateList(listsIdx, list);
 
-        $rootScope.$broadcast("remove", itemToRemove.item);
+        $rootScope.$broadcast("list:remove", itemToRemove.item);
 
         return rval;
     }
@@ -74,13 +72,24 @@ app.factory('listService', function ($rootScope, userService, $log) {
         list.items.push(item);
         updateList(listsIdx, list);
         
-        $rootScope.$broadcast("completed", item.item);
+        $rootScope.$broadcast("list:completed", item.item);
         
+    };
+    
+    service.removeAllFromList = function(userId) {
+        this.deleteList(userId);
+        this.addList(userId);
+        $rootScope.$broadcast("list:cleared");
+
     }
     
     service.deleteList = function (userId) {
-        //to be called when a user is deleted 
-    }
+        var list = this.getList(userId);
+        var lists = getLists();
+        var listsIdx = lists.indexOf(list);
+        lists.splice(listsIdx, 1);
+        updateLists(lists);
+    };
 
     function updateLists(lists) {
         localStorage.lists = JSON.stringify(lists);

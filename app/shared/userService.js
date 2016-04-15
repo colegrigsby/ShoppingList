@@ -12,7 +12,7 @@ app.factory('userService', function($rootScope, $log) {
             return user.username == username;
         });
         if (dup[0] != undefined){
-            $rootScope.$broadcast("duplicateUser", username);
+            $rootScope.$broadcast("user:duplicate", username);
             
             
             return -1;
@@ -23,7 +23,7 @@ app.factory('userService', function($rootScope, $log) {
             var user = {id: id, username: username, password: password};
             users.push(user);
             updateUsers(users);
-            $rootScope.$broadcast("userAdded", username);
+            $rootScope.$broadcast("user:added", username);
             return id;
         }
     };
@@ -58,7 +58,7 @@ app.factory('userService', function($rootScope, $log) {
     service.setCurrentUser = function(user){
         localStorage.currentUser = JSON.stringify(user);
         localStorage.loggedIn = true;
-        $rootScope.$broadcast("loggedIn", user.username);
+        $rootScope.$broadcast("user:loggedIn", user.username);
     }
 
     service.getCurrentUser = function() {
@@ -80,7 +80,7 @@ app.factory('userService', function($rootScope, $log) {
         localStorage.currentUser = "";
         localStorage.loggedIn = JSON.stringify(false);
         //$log.log(name);
-        $rootScope.$broadcast("loggedOff", name.username);
+        $rootScope.$broadcast("user:loggedOff", name.username);
     }
     
     function updateUsers(users){
