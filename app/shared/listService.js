@@ -21,16 +21,26 @@ app.factory('listService', function ($rootScope, userService, $log) {
     }
 
     service.addItem = function (userId, newItem, quantity) {
+
+        //TODO check if duplicate, if so, add quantity to it
         var list;
         if ((list = this.getList(userId))) {
             //$log.log(list);
             var idx = listIndex(list);
+            var duplicate = list.items.filter(function(item){
+                return item.item == newItem;
+            });
+            if(duplicate[0]) {
+                var q = (list.items[list.items.indexOf(duplicate[0])].quantity += quantity);
+                $rootScope.$broadcast("list:updateQ", newItem, q);
 
-            list.items.push({item: newItem, quantity: quantity, completed: false});
-            //$log.log(idx)
+            }
+            else {
+                list.items.push({item: newItem, quantity: quantity, completed: false});
+                $rootScope.$broadcast("list:add", newItem, quantity);
 
+            }
             updateList(idx, list);
-            $rootScope.$broadcast("list:add", newItem, quantity);
 
         }
         else {

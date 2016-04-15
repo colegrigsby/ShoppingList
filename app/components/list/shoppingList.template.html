@@ -40,7 +40,8 @@
                     ng-repeat="item in list.items | orderBy :['completed', 'item'] track by $index"
                     ng-style="item.completed && {'text-decoration': 'line-through'}"
                     style="min-height: 50px">
-                    <strong>{{$index + 1}}.</strong> {{item.item}} - {{item.quantity}}
+                    <strong >{{$index + 1}}.</strong> {{item.item}} - {{item.quantity}}
+                    <!--it would be really cool to not allow duplicates and update the quantity here-->
                     <button class="pull-right btn btn-warning btn-sm" ng-click="remove(item)">Remove</button>
                     <button class="pull-left btn btn-success btn-sm" ng-click="toggleComplete(item)">Mark
                         {{item.completed ?
