@@ -1,10 +1,9 @@
-app.controller("logoutModalController", function($scope, $uibModalInstance, userService, $location){
+app.controller("logoutModalController", function($scope, $uibModalInstance, userService, $state){
     $scope.logout = function() {
         userService.clearCurrentUser();
 
         $uibModalInstance.close();
-
-        $location.path('/');
+        $state.go("login");
 
     }
     $scope.home = function(){

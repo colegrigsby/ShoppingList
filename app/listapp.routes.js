@@ -10,13 +10,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: "homeController"
         })
         
-        .state('home.register', {
+        .state('register', {
             url: '/register',
             templateUrl: 'app/components/login/register.partial.html',
             controller: "registerController"
         })
         
-        .state('home.login', {
+        .state('login', {
             url: '/login',
             templateUrl: 'app/components/login/login.partial.html',
             controller: 'loginController'

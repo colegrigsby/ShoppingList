@@ -1,18 +1,13 @@
-app.controller("homeController", function($scope, $rootScope, $log, listService, userService, $uibModal){
+app.controller("homeController", function($scope, $log, listService, userService, $uibModal, $state){
 
-    $scope.list = listService.getCurrentList();
-    $scope.username = userService.getCurrentUser().username;
-
-    $rootScope.$on("user:loggedIn", function(data){
+    if(!userService.loggedIn()) {
+        $state.go("login");
+    }
+    else { //is this bad practice? i was getting an error from get current list because cur user is undefined
         $scope.list = listService.getCurrentList();
         $scope.username = userService.getCurrentUser().username;
-    });
-
-    $scope.loggedIn = function(){
-        return userService.loggedIn();
     }
-
-
+    
     $scope.open = function () {
 
         var modalInstance = $uibModal.open({

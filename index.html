@@ -12,6 +12,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular-sanitize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
     <script src="app/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.11.1/lodash.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -34,9 +35,8 @@
 
 </head>
 
-<!-- Controllers can be on any element, here it's on the body and that's what we usually do -->
+<!-- not really necesary but looks cool and will be useful in future apps -->
 
-<!--TODO check out bootstrap scrollspy -->
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand">Shopping List</a>
@@ -52,10 +52,7 @@
 
 <div class="container app" >
     <div class="row">
-
             <div ui-view></div>
-
-
     </div>
 
 

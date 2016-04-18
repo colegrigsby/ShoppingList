@@ -1,4 +1,4 @@
-app.controller("loginController", function($scope, $log, userService, $location, $timeout, $rootScope){
+app.controller("loginController", function($scope, $log, userService, $state, $timeout, $rootScope){
     
     $scope.model = {username: "", password: ""};
 
@@ -10,7 +10,7 @@ app.controller("loginController", function($scope, $log, userService, $location,
             //set the applications userID?
             userService.setCurrentUser(user);
 
-            $location.path('/');
+            $state.go('home');
             
         }
         else {

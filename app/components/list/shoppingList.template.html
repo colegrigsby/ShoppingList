@@ -1,15 +1,14 @@
 <div class="col-md-6 col-md-offset-3">
 
-    <h5>
-        <br>
-        <ul class="list-group" style="list-style-type : none;">
-            <li class="list-group-item">
-                <h3>Shopping List</h3>
-            </li>
-            <li class="add list-group-item">
-                <h4>Add New Item</h4>
-                <row >
-                    <form name="form" ng-submit="add()" role="form">
+    <br>
+    <ul class="list-group" style="list-style-type : none;">
+        <li class="list-group-item">
+            <h3>Shopping List</h3>
+        </li>
+        <li class="add list-group-item">
+            <h4>Add New Item</h4>
+            <row>
+                <form name="form" ng-submit="add()" role="form">
 
                     <div class="col-md-2"></div>
 
@@ -18,7 +17,8 @@
                         <label>Item</label> <input type="text" ng-model="model.newItem" class="form-control" required/>
                     </div>
                     <div class="col-xs-2">
-                        <label>Quantity</label> <input type="number" ng-model="model.quantity" class="form-control" required/>
+                        <label>Quantity</label> <input type="number" ng-model="model.quantity" class="form-control"
+                                                       required/>
                     </div>
                     <div class="col-md-2">
                         <br>
@@ -26,40 +26,40 @@
                                 ng-disabled="model.newItem == '' || model.quantity < 1">Add
                         </button>
                     </div>
-                    </form>
-                </row>
-            </li>
-            <li class="list-group-item" ng-if="list.items.length > 0">
+                </form>
+            </row>
+        </li>
+        <li class="list-group-item" ng-if="list.items.length > 0">
 
-                <h5>Item - Quantity</h5>
+            <h5>Item - Quantity</h5>
 
 
-            </li>
-            <div class="list-wrapper ">
-                <li class="list-group-item text-center"
-                    ng-repeat="item in list.items | orderBy :['completed', 'item'] track by $index"
-                    ng-style="item.completed && {'text-decoration': 'line-through'}"
-                    style="min-height: 50px">
-                    <strong >{{$index + 1}}.</strong> {{item.item}} - {{item.quantity}}
-                    <!--it would be really cool to not allow duplicates and update the quantity here-->
-                    <button class="pull-right btn btn-warning btn-sm" ng-click="remove(item)">Remove</button>
-                    <button class="pull-left btn btn-success btn-sm" ng-click="toggleComplete(item)">Mark
-                        {{item.completed ?
-                        "incomplete" : "complete"}}
-                    </button>
-
-                </li>
-            </div>
-            <li class="list-group-item" ng-if="list.items.length > 0">
-
-                <button class="btn btn-danger btn-sm" ng-click="removeAll()">Remove All</button>
-
+        </li>
+        <div class="list-wrapper ">
+            <li class="list-group-item text-center"
+                ng-repeat="item in list.items | orderBy :['completed', 'item'] track by $index"
+                ng-style="item.completed && {'text-decoration': 'line-through'}"
+                style="min-height: 50px">
+                <strong>{{$index + 1}}.</strong> {{item.item}}- {{item.quantity}}
+                <!--it would be really cool to not allow duplicates and update the quantity here-->
+                <button class="pull-right btn btn-warning btn-sm" ng-click="remove(item)">Remove</button>
+                <button class="pull-left btn btn-success btn-sm" ng-click="toggleComplete(item)">Mark
+                    {{item.completed ?
+                    "incomplete" : "complete"}}
+                </button>
 
             </li>
+        </div>
+        <li class="list-group-item" ng-if="list.items.length > 0">
 
-            <li class="list-group-item" ng-if="list.items.length == 0">
-                <strong>Empty List</strong>
-            </li>
-        </ul>
-    </div>
+            <button class="btn btn-danger btn-sm" ng-click="removeAll()">Remove All</button>
+
+
+        </li>
+
+        <li class="list-group-item" ng-if="list.items.length == 0">
+            <strong>Empty List</strong>
+        </li>
+    </ul>
+</div>
 </div>

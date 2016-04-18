@@ -1,4 +1,4 @@
-app.controller("registerController", function($scope, $log, userService, listService, $location){
+app.controller("registerController", function($scope, $log, userService, listService, $state){
 
     $scope.model = {username: "", password: "", passwordConf: ""};
 
@@ -10,7 +10,7 @@ app.controller("registerController", function($scope, $log, userService, listSer
             $scope.model.username = "";
             $scope.model.password = "";
             $scope.model.passwordConf = "";
-            $location.path("/home/login")
+            $state.go("login")
         }
     };
 

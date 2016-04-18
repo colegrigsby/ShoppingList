@@ -4,17 +4,14 @@ app.factory('userService', function($rootScope, $log) {
     var service = {};
     var _currentUser = {};
 
+    //TODO lodash library
 
-    service.addUser = function (username, password) { //TODO check duplicates etc
+    service.addUser = function (username, password) {
         var users = getUsers();
 
-        var dup = users.filter(function(user){
-            return user.username == username;
-        });
-        if (dup[0] != undefined){
+        var dup = _.find(users, {username: username});
+        if (dup){
             $rootScope.$broadcast("user:duplicate", username);
-            
-            
             return -1;
         }
         else {
@@ -29,28 +26,16 @@ app.factory('userService', function($rootScope, $log) {
     };
 
 
-    //TODO JSON STUFFS
     service.getUserById = function(userId){
-        user = getUsers().filter(function(val) {
-            return val.id == userId;
-        });
-        if (user[0])
-            return user[0];
-        return null;
-        //ERROR HANDLING
+        return _.find(getUsers(), {id: userId});
     };
 
     service.getUserByName = function(username){
-        user = getUsers().filter(function(val) {
-            return val.username == username;
-        });
-        if (user[0])
-            return user[0];
-        return null;
+        return _.find(getUsers(), {username: username});
     };
 
-    service.removeUser = function(){
-        //TODO
+    service.removeUser = function(userId){
+        return _.remove(getUsers(), {id: userId});
     };
 
     
@@ -62,10 +47,9 @@ app.factory('userService', function($rootScope, $log) {
     }
 
     service.getCurrentUser = function() {
-        //$log.log(localStorage.loggedIn == true)
-        if (localStorage.loggedIn != undefined && JSON.parse(localStorage.loggedIn) == true)
+        if (this.loggedIn())
             return JSON.parse(localStorage.currentUser);
-        return -1;
+        return undefined;
     }
 
     service.loggedIn = function() {

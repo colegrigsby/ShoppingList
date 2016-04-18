@@ -1,19 +1,10 @@
-<div class="text-center" >
+<div class="text-center">
 
-    <div ng-show="!loggedIn()">
-        <h2>Welcome to your shopping list!</h2>
-        <p>Please login or register</p>
-        <a ui-sref=".login" class="btn btn-primary">Login</a>
-        <a ui-sref=".register" class="btn btn-danger">Register</a>
 
-    </div>
-    <div ng-show="loggedIn()">
-        <shopping-list list="list"></shopping-list>
-        <br>
-        <a ng-click="open()" class="btn btn-primary">Logout</a>
-        <p class="text-center">You are logged in as {{username}}</p>
-
-    </div>
+    <shopping-list list="list"></shopping-list>
+    <br>
+    <a ng-click="open()" class="btn btn-primary">Logout</a>
+    <p class="text-center">You are logged in as {{username}}</p>
 
 
     <br>
